@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7ff68150-7263-4e2c-97c2-f8b8da4c39ee" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="216" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mysql" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mysql" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mysql" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="blog: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mysql" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="blog: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="blog_blog: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Maven\rep1" />
+        <option name="mavenHome" value="E:/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="E:\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1bRdMROJ20W3jS41oithbUcjJdN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/plugin/prism" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IdeaProject\JavaWebExp\blog\src\test\java\cn\jxj4869\blog\oldstatic" />
+      <recent name="D:\IdeaProject\JavaWebExp\blog\src\main\resources\templates\console" />
+      <recent name="D:\IdeaProject\JavaWebExp\blog\src\main\resources\templates\admin" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.jxj4869.blog.component" />
+      <recent name="cn.jxj4869.blog.controller" />
+      <recent name="cn.jxj4869.blog.entity" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProject\JavaWebExp\blog\src\main\resources\static\plugin\prism" />
+      <recent name="D:\IdeaProject\JavaWebExp\blog\src\main\resources\templates\blog" />
+      <recent name="D:\IdeaProject\JavaWebExp\blog\log" />
+      <recent name="D:\IdeaProject\JavaWebExp\blog\src\main\resources\templates\message" />
+      <recent name="D:\IdeaProject\JavaWebExp\blog\src\main\resources\templates\admin" />
+    </key>
+  </component>
+  <component name="RestServicesNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="Found 54 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+        </path>
+        <path>
+          <item name="Found 54 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+          <item name="blog" type="c588b436:RestServiceStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BlogApplication">
+    <configuration name="MainUtilTest.senderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.jxj4869.blog.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.jxj4869.blog" />
+      <option name="MAIN_CLASS_NAME" value="cn.jxj4869.blog.MainUtilTest" />
+      <option name="METHOD_NAME" value="senderTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MapperTest.blogSelectByIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.jxj4869.blog.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.jxj4869.blog" />
+      <option name="MAIN_CLASS_NAME" value="cn.jxj4869.blog.MapperTest" />
+      <option name="METHOD_NAME" value="blogSelectByIdTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MapperTest.selectCurrentCommentByUidTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.jxj4869.blog.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.jxj4869.blog" />
+      <option name="MAIN_CLASS_NAME" value="cn.jxj4869.blog.MapperTest" />
+      <option name="METHOD_NAME" value="selectCurrentCommentByUidTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MapperTest.selectPageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.jxj4869.blog.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.jxj4869.blog" />
+      <option name="MAIN_CLASS_NAME" value="cn.jxj4869.blog.MapperTest" />
+      <option name="METHOD_NAME" value="selectPageTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MarkDownTest.markdownTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.jxj4869.blog.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.jxj4869.blog" />
+      <option name="MAIN_CLASS_NAME" value="cn.jxj4869.blog.MarkDownTest" />
+      <option name="METHOD_NAME" value="markdownTest1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="blog" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.jxj4869.blog.BlogApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.30" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="_Default_(Template)_Project" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="54918" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MarkDownTest.markdownTest1" />
+        <item itemvalue="JUnit.MapperTest.blogSelectByIdTest" />
+        <item itemvalue="JUnit.MapperTest.selectPageTest" />
+        <item itemvalue="JUnit.MainUtilTest.senderTest" />
+        <item itemvalue="JUnit.MapperTest.selectCurrentCommentByUidTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.107315116" />
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpringMvcView">
+    <option name="showModules" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7ff68150-7263-4e2c-97c2-f8b8da4c39ee" name="Default Changelist" comment="" />
+      <created>1588598791895</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588598791895</updated>
+      <workItem from="1588598797865" duration="9032000" />
+      <workItem from="1588646896349" duration="599000" />
+      <workItem from="1588690498959" duration="6083000" />
+      <workItem from="1588723884501" duration="5574000" />
+      <workItem from="1588730027884" duration="7303000" />
+      <workItem from="1588737360099" duration="2083000" />
+      <workItem from="1588752570064" duration="4898000" />
+      <workItem from="1588761557513" duration="5963000" />
+      <workItem from="1588767659216" duration="2697000" />
+      <workItem from="1588770374462" duration="12631000" />
+      <workItem from="1588809523194" duration="23581000" />
+      <workItem from="1588845016478" duration="9295000" />
+      <workItem from="1588857958449" duration="3410000" />
+      <workItem from="1588861397222" duration="12464000" />
+      <workItem from="1588896466889" duration="3027000" />
+      <workItem from="1588901196227" duration="5802000" />
+      <workItem from="1588909339402" duration="24854000" />
+      <workItem from="1588942196191" duration="7076000" />
+      <workItem from="1588952023023" duration="780000" />
+      <workItem from="1588985770113" duration="8339000" />
+      <workItem from="1588995522961" duration="1993000" />
+      <workItem from="1588997550458" duration="21990000" />
+      <workItem from="1589024782830" duration="8038000" />
+      <workItem from="1589077283356" duration="2000" />
+      <workItem from="1589077566694" duration="16365000" />
+      <workItem from="1589106756535" duration="5395000" />
+      <workItem from="1589122627010" duration="5587000" />
+      <workItem from="1589155815325" duration="5123000" />
+      <workItem from="1589163755878" duration="1742000" />
+      <workItem from="1589185427613" duration="2297000" />
+      <workItem from="1589188740580" duration="5975000" />
+      <workItem from="1589202679950" duration="10184000" />
+      <workItem from="1589268564405" duration="651000" />
+      <workItem from="1589302412072" duration="1874000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="872" y="358" key="#SQL_Dialects" timestamp="1588697730454">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="872" y="358" key="#SQL_Dialects/0.0.2560.1400@0.0.2560.1400" timestamp="1588697730454" />
+    <state x="1010" y="455" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1589013188757">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1010" y="455" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589013188757" />
+    <state x="872" y="358" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588604793668">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="872" y="358" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1588604793668" />
+    <state x="975" y="502" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589207450229">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="975" y="502" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1589207450229" />
+    <state x="1085" y="409" key="#com.intellij.ide.util.MemberChooser" timestamp="1589005658955">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1085" y="409" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1589005658955" />
+    <state x="1059" y="558" width="441" height="293" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1588905102866">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1059" y="558" width="441" height="293" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2560.1400@0.0.2560.1400" timestamp="1588905102866" />
+    <state x="826" y="558" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589203301100">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="826" y="558" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1589203301100" />
+    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1589108032841">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1589108032841" />
+    <state width="2517" height="278" key="GridCell.Tab.0.bottom" timestamp="1589216555819">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="278" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1589216555819" />
+    <state width="2517" height="278" key="GridCell.Tab.0.center" timestamp="1589216555819">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="278" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1589216555819" />
+    <state width="2517" height="278" key="GridCell.Tab.0.left" timestamp="1589216555819">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="278" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1589216555819" />
+    <state width="2517" height="278" key="GridCell.Tab.0.right" timestamp="1589216555819">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="278" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1589216555819" />
+    <state width="2517" height="210" key="GridCell.Tab.1.bottom" timestamp="1589216555809">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="210" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1589216555809" />
+    <state width="2517" height="210" key="GridCell.Tab.1.center" timestamp="1589216555809">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="210" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1589216555809" />
+    <state width="2517" height="210" key="GridCell.Tab.1.left" timestamp="1589216555809">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="210" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1589216555809" />
+    <state width="2517" height="210" key="GridCell.Tab.1.right" timestamp="1589216555809">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="210" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1589216555809" />
+    <state width="2517" height="399" key="GridCell.Tab.2.bottom" timestamp="1589116270541">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="399" key="GridCell.Tab.2.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1589116270541" />
+    <state width="2517" height="399" key="GridCell.Tab.2.center" timestamp="1589116270541">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="399" key="GridCell.Tab.2.center/0.0.2560.1400@0.0.2560.1400" timestamp="1589116270541" />
+    <state width="2517" height="399" key="GridCell.Tab.2.left" timestamp="1589116270541">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="399" key="GridCell.Tab.2.left/0.0.2560.1400@0.0.2560.1400" timestamp="1589116270541" />
+    <state width="2517" height="399" key="GridCell.Tab.2.right" timestamp="1589116270541">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="399" key="GridCell.Tab.2.right/0.0.2560.1400@0.0.2560.1400" timestamp="1589116270541" />
+    <state x="781" y="342" key="SettingsEditor" timestamp="1588845031335">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="781" y="342" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1588845031335" />
+    <state x="1010" y="464" key="extract.method.dialog" timestamp="1588728871630">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1010" y="464" key="extract.method.dialog/0.0.2560.1400@0.0.2560.1400" timestamp="1588728871630" />
+    <state x="1022" y="327" key="refactoring.ChangeSignatureDialog" timestamp="1588870889805">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1022" y="327" key="refactoring.ChangeSignatureDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1588870889805" />
+    <state x="936" y="330" key="run.anything.popup" timestamp="1588940536992">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="936" y="330" key="run.anything.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1588940536992" />
+    <state x="1123" y="626" width="672" height="678" key="search.everywhere.popup" timestamp="1589099405428">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1123" y="626" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1589099405428" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/jxj4869/blog/controller/BlogController.java</url>
+          <line>124</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/cn/jxj4869/blog/MapperTest.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/jxj4869/blog/controller/CommentController.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/jxj4869/blog/service/impl/CommentServiceImpl.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/jxj4869/blog/controller/UserController.java</url>
+          <line>199</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/jxj4869/blog/service/impl/UserServiceImpl.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/jxj4869/blog/controller/BlogController.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/jxj4869/blog/controller/ConsoleController.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/jxj4869/blog/controller/BlogController.java</url>
+          <line>166</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/jxj4869/blog/controller/CommentController.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/jxj4869/blog/service/impl/CommentServiceImpl.java</url>
+          <line>116</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/jxj4869/blog/controller/UserController.java</url>
+          <line>173</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/templates/message/message.html</url>
+          <line>197</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/test/java/cn/jxj4869/blog/oldstatic/blogcontent-old.html</url>
+          <line>517</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/templates/console/consoleblog.html</url>
+          <line>87</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/templates/console/consolesetting.html</url>
+          <line>279</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main/resources/templates/console/consolesetting.html</url>
+          <line>309</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="blog.getUid().equals(user.getUid())" language="JAVA" />
+        <watch expression="suser.getUserName().equals(id)" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/blog$BlogApplication.ic" NAME="BlogApplication Coverage Results" MODIFIED="1588860481416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

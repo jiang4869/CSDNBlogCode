@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::head(console)">
+    <meta charset="UTF-8">
+    <title>console</title>
+    <link rel="stylesheet" href="../../static/plugin/semanticui/semantic.min.css">
+    <script src="../../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../../static/plugin/semanticui/semantic.min.js"></script>
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+<body>
+
+<!--导航栏-->
+<div class="ui attached" th:replace="_fragments::nav(0)">
+    <div class="ui fluid  container ">
+        <div class="ui huge sixteen wide  grid secondary pointing  stackable menu padded">
+            <a href="#" class="ui item menu toggle icon button m-right-top m-mobile-show">
+                <i class="sidebar icon"></i>
+            </a>
+            <div class="ui header item m-text-large m-item m-mobile-hide m-padded-b-tiny m-text-thin m-opacity-mini">
+                Blog
+            </div>
+            <a href="#" class="ui large item m-item m-mobile-hide"><i class="small home icon"></i>Home</a>
+            <a href="#" class="ui large item m-item m-mobile-hide"><i class="small file alternate outline icon"></i>Blog</a>
+            <a href="#" class="ui large item m-item m-mobile-hide"><i class="small envelope icon"></i>Message</a>
+            <div class="ui item  right floated m-margin-r m-item m-mobile-hide" style="height: 48px">
+                <div>
+                    <a href="#" class="m-margin-r m-black">登录</a>
+                    <a href="#" class="m-margin-r m-black">注册</a>
+                </div>
+                <a href="#" class="m-margin-r-medium"><img src="../static/img/35.jpg" class="ui avatar image" style=""></a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="waypoint" class="ui m-margin-top-large m-margin">
+    <div class="ui m-container-large animated fadeIn"  >
+
+        <div class="ui segment">
+            <!--中间内容-->
+            <div  class="m-container-small m-padded-tb-big">
+                <div class="ui container">
+                    <div class="ui warning large  message" th:if="${session.user==null}">
+                        <h3>Hi,</h3>
+                        <p>您还没有登录，请点击<a href="#" th:href="@{/login}">登录。</a> 还没注册？点击 <a href="#" th:href="@{/register}">注册</a></p>
+                    </div>
+                    <div class="ui warning large  message" th:if="${session.user!=null}">
+                        <p>对不起，您没有权限查看</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<br><br><br><br><br><br><br><br><br><br>
+<footer th:replace="_fragments::footer"></footer>
+
+<script th:replace="_fragments::script">
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+</script>
+
+
+<script>
+
+
+    function blogEdit(obj) {
+        var bid = $(obj).data('bid');
+
+        $.ajax({
+            url: '[[@{/blog/edit/}]]'+bid,
+            type: 'delete',
+            contentType: "application/json",//设置请求参数类型为json字符串
+            dataType: "json",
+            success: function (result) {
+                if(result.flag==true) {
+                    window.location.reload();
+                }
+            },
+
+        });
+
+
+    }
+
+</script>
+
+
+
+
+
+</body>
+</html>

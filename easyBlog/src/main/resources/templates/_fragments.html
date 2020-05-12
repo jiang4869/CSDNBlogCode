@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title th:text="${title}">fragments</title>
+    <link rel="stylesheet" href="../../static/plugin/editormd/css/editormd.css" th:href="@{/plugin/editormd/css/editormd.css}">
+    <link rel="stylesheet" href="../static/plugin/semanticui/semantic.min.css" th:href="@{/plugin/semanticui/semantic.min.css}">
+    <script src="../static/js/jquery-3.4.1.min.js" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+
+    <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}">
+    <link rel="stylesheet" href="../static/plugin/tocbot/tocbot.css" th:href="@{/plugin/tocbot/tocbot.css}">
+    <link rel="stylesheet" type="text/css" href="../static/plugin/simditor/styles/simditor.css" th:href="@{/plugin/simditor/styles/simditor.css}">
+
+
+    <script src="../static/plugin/semanticui/semantic.min.js" th:src="@{/plugin/semanticui/semantic.min.js}"></script>
+    <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}">
+
+
+    <link rel="stylesheet" href="../static/plugin/prism/prism.css" th:href="@{/plugin/prism/prism.css}">
+
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div class="ui attached" th:fragment="nav(n)">
+    <div class="ui fluid  container ">
+        <div class="ui huge sixteen wide  grid secondary pointing  stackable menu padded">
+            <a href="#" class="ui item menu toggle icon button m-right-top m-mobile-show">
+                <i class="sidebar icon"></i>
+            </a>
+            <div class="ui header item m-text-large m-item m-mobile-hide m-padded-b-tiny m-text-thin m-opacity-mini">
+                Blog
+            </div>
+            <a href="#" class="ui large item m-item m-mobile-hide" th:classappend="${n==1}?'active blue'" th:href="@{/}"><i class="small home icon"></i>Home</a>
+            <a href="#" class="ui large item m-item m-mobile-hide"  th:classappend="${n==2}?'active blue'" th:href="@{/bloglist}"><i class="small file alternate outline icon"></i>Blog</a>
+            <a href="#" class="ui large item m-item m-mobile-hide"  th:classappend="${n==3}?'active blue'" th:href="@{/message}"><i class="small envelope icon"></i>Message</a>
+            <div class="ui item  right floated m-margin-r m-item m-mobile-hide" style="height: 48px">
+                <div th:if="${session.user}==null">
+                    <a href="#" class="m-margin-r m-black" th:href="@{/login}">登录</a>
+                    <a href="#" class="m-margin-r m-black" th:href="@{/register}">注册</a>
+                </div>
+              <div th:if="${session.user}!=null">
+                  <div class="ui dropdown m-margin-r-medium">
+                      <a  href="javascript:void(0)" class="m-margin-r-medium" th:href="@{'/console/'+${session.user.userName}}"><img src="../static/img/35.jpg" th:src="@{${session.user.avatar}}" class="ui avatar image" style=""></a>
+                      <div class="menu">
+                          <a class="item" th:href="@{'/console/'+${session.user.userName}}"><i class="user icon"></i>console</a>
+                          <a class="item" href="javascript:logout()"><i class="logout icon"></i>logout</a>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<footer th:fragment="footer" class="ui segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <span class="header m-text m-text-spaced">@ 2020 Designed by XiaojuJiang </span><span class="m-margin-l-huge">System Time : &ensp; <text id="time">2020-2020-20 10 10 10</text></span>
+    </div>
+</footer>
+
+
+
+<script   th:fragment="script">
+
+
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+
+
+    $('.ui.dropdown').dropdown({
+        on:'hover'
+    });
+
+
+  function logout() {
+      console.log('logout');
+      $.post('[[@{/user/logout}]]','',function (data) {
+          window.location.reload();
+      })
+  }
+
+
+    var time = [[${date}]];
+
+    function time_f() {
+        time += 1000;
+        $('#time').text(new Date(time));
+    }
+
+    time_f();
+    setInterval("time_f()", 1000);
+
+</script>
+</body>
+</html>

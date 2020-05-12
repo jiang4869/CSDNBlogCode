@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::head('login')">
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" href="../static/plugin/semanticui/semantic.min.css">
+    <script src="../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../static/plugin/semanticui/semantic.min.js"></script>
+    <link rel="stylesheet" href="../static/css/me.css">
+</head>
+<body>
+
+<!--导航栏-->
+<div class="ui attached" th:replace="_fragments::nav(0)">
+    <div class="ui fluid  container ">
+        <div class="ui huge sixteen wide  grid secondary pointing  stackable menu padded">
+            <a href="#" class="ui item menu toggle icon button m-right-top m-mobile-show">
+                <i class="sidebar icon"></i>
+            </a>
+            <div class="ui header item m-text-large m-item m-mobile-hide m-padded-b-tiny m-text-thin m-opacity-mini">
+                Blog
+            </div>
+            <a href="#" class="ui large item m-item m-mobile-hide"><i class="small home icon"></i>Home</a>
+            <a href="#" class="ui large item m-item m-mobile-hide"><i class="small file alternate outline icon"></i>Blog</a>
+            <a href="#" class="ui large item m-item m-mobile-hide"><i class="small envelope icon"></i>Message</a>
+            <div class="ui item  right floated m-margin-r m-item m-mobile-hide" style="height: 48px">
+                <div>
+                    <a href="#" class="m-margin-r m-black">登录</a>
+                    <a href="#" class="m-margin-r m-black">注册</a>
+                </div>
+                <a href="#" class="m-margin-r-medium"><img src="../static/img/35.jpg" class="ui avatar image" style=""></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="ui five column centered stackable grid">
+    <div class="ui  column m-margin-top-large " style="min-width: 480px">
+        <div class="ui error message" th:if="${msg!=null}" th:text="${msg}"></div>
+        <div class="ui container m-margin">
+            <h2 class="ui center aligned header m-text m-teal">用户登录</h2>
+        </div>
+        <div class="ui container m-shadow-small">
+
+            <form class="ui large form" method="post" action="#">
+                <div class="ui  segment">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="username" placeholder="用户名">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="password" placeholder="密码">
+                        </div>
+                    </div>
+                    <div class="field container">
+
+                        <div class="ui two column grid">
+                            <div class="ui column">
+                                <div class="ui left icon input">
+                                    <i class="check icon"></i>
+                                    <input type="text" name="checkcode" placeholder="验证码">
+                                </div>
+                            </div>
+                            <div class="ui column">
+
+                                <a href="javascript:void(0)" id="checkCode"><img src="static/img/checkcode.png"
+                                                                                 th:src="@{/user/checkCode}"
+                                                                                 class="rounded checkcode tooltip"
+                                                                                 data-content="点击刷新验证码" alt=""></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button id="login-btn" class="ui fluid large teal button" type="button">登 录</button>
+<!--                    <div class="ui error message m-margin-top-large">-->
+<!--                        <i class="close icon"></i>-->
+<!--                        <div class="header">-->
+<!--                            您提交的一些错误-->
+<!--                        </div>-->
+<!--                        <ul class="list">-->
+<!--                            <li>你的密码需要包含至少一个大写和小写字母</li>-->
+<!--                            <li>你需要选择你所在的国家</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+                </div>
+
+            </form>
+        </div>
+
+
+        <div class="ui container">
+            <div class="ui bottom attached warning message container center aligned">
+                <i class="icon help"></i>
+                新用户？ <a href="#" th:href="@{/register}">这里注册</a>。
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<br><br><br><br><br><br><br><br><br><br>
+<footer th:replace="_fragments::footer"></footer>
+
+<script th:replace="_fragments::script">
+
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+</script>
+
+<script>
+
+
+
+    $('.message .close')
+        .on('click', function () {
+            $(this)
+                .closest('.message')
+                .transition('fade')
+            ;
+        })
+    ;
+    $.fn.form.settings.rules.checkCode = function () {
+        var checkcode = $('[name="checkcode"]').val();
+        var flag = false;
+        $.post({
+            url: '[[@{/user/checkCode}]]',
+            async: false,
+            data: {
+                'checkCode': checkcode
+            },
+            success: function (data) {
+                flag = data.flag;
+            }
+        })
+        return flag;
+    }
+
+
+    $('.ui.form').form({
+        inline:true,
+        keyboardShortcuts:false,
+        fields:{
+            username:{
+                identifier:'username',
+                on:`blur`,
+                rules:[
+                    {
+                        type:'empty',
+                        prompt:'请输入用户名'
+                    }
+                ]
+            },
+            password:{
+                identifier: 'password',
+                rules:[
+                    {
+                        type:'empty',
+                        prompt:'请输入密码'
+                    }
+                ]
+            },
+            checkcode:{
+                identifier: 'checkcode',
+                rules:[
+                    {
+                        type:'checkCode',
+                        prompt:'验证码填写错误'
+                    }
+                ]
+            },
+        }
+    })
+
+    $('#checkCode').click(function () {
+        // alert('hhhh')
+        var src = '[[@{/user/checkCode}]]' + '?time=' + new Date().getTime();
+        $(this).children('img').attr('src', src);
+    });
+
+    $(document).keypress(function (e) {
+        if(e.which==13) {
+            $('#login-btn').click();
+        }
+
+    });
+
+
+    $('#login-btn').click(function () {
+        var flag=$('.ui.form').form('validate form');
+        console.log(flag);
+        if (flag) {
+            $.post('[[@{/user/login}]]', {
+                'userName': $('[name="username"]').val(),
+                'password': $('[name="password"]').val()
+            }, function (data) {
+                console.log(data)
+                if (data.flag == false)
+                    alert(data.msg)
+                else {
+                  alert('登录成功');
+                  window.location='[[@{/}]]';
+                }
+            })
+        }
+    })
+</script>
+</body>
+</html>

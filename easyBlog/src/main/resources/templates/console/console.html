@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::head(console)">
+    <meta charset="UTF-8">
+    <title>console</title>
+    <link rel="stylesheet" href="../../static/plugin/semanticui/semantic.min.css">
+    <script src="../../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../../static/plugin/semanticui/semantic.min.js"></script>
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+<body>
+
+<!--导航栏-->
+<div class="ui attached" th:replace="_fragments::nav(0)">
+    <div class="ui fluid  container ">
+        <div class="ui huge sixteen wide  grid secondary pointing  stackable menu padded">
+            <a href="#" class="ui item menu toggle icon button m-right-top m-mobile-show">
+                <i class="sidebar icon"></i>
+            </a>
+            <div class="ui header item m-text-large m-item m-mobile-hide m-padded-b-tiny m-text-thin m-opacity-mini">
+                Blog
+            </div>
+            <a href="#" class="ui large item m-item m-mobile-hide"><i class="small home icon"></i>Home</a>
+            <a href="#" class="ui large item m-item m-mobile-hide"><i class="small file alternate outline icon"></i>Blog</a>
+            <a href="#" class="ui large item m-item m-mobile-hide"><i class="small envelope icon"></i>Message</a>
+            <div class="ui item  right floated m-margin-r m-item m-mobile-hide" style="height: 48px">
+                <div>
+                    <a href="#" class="m-margin-r m-black">登录</a>
+                    <a href="#" class="m-margin-r m-black">注册</a>
+                </div>
+                <a href="#" class="m-margin-r-medium"><img src="../static/img/35.jpg" class="ui avatar image" style=""></a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="waypoint" class="ui m-margin-top-large m-margin">
+    <div class="ui m-container-large animated fadeIn"  >
+        <div class="ui pointing menu" th:replace="console/_fragments::consolemenu(1)">
+            <a class="item active">
+                主页
+            </a>
+            <a class="item">
+                博客管理
+            </a>
+            <a class="item">
+                个人信息
+            </a>
+
+        </div>
+
+        <div class="ui segment">
+            <div class="ui">
+                <h4 class="ui dividing header">个人信息</h4>
+            </div>
+            <div class="ui items">
+                <div class="item">
+                    <div class="image">
+                        <img src="../../static/img/35.jpg" th:src="@{${user.avatar}}" class="ui avatar image">
+                    </div>
+                    <div class="content m-margin-l-large" >
+                        <div class="ui grid">
+                            <div class="three wide column" >注册时间</div>
+                            <div class="thirteen wide column" th:text="${#dates.format(user.createTime,'yyyy-MM-dd HH:mm:ss')}">2020-2020-4</div>
+                            <div class="three wide column">昵称</div>
+                            <div class="thirteen wide column" th:text="${user.nickName}">jiang</div>
+                            <div class="three wide column">email</div>
+                            <div class="thirteen wide column" th:text="${user.email}">2020-2020-4</div>
+                            <div class="three wide column">QQ</div>
+                            <div class="thirteen wide column" th:text="${user.qq}">1121429190</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="ui segment">
+           <div class="ui">
+               <h4 class="ui">最近发布的文章</h4>
+           </div>
+            <div class="ui divider"></div>
+            <div class="ui content">
+               <div class="ui very relaxed attached divided items bloglist">
+                   <div class="item" th:each="blog,stat:${blogList}">
+                       <a href="http://www.baidu.com" class="image hover" target="_blank" th:href="@{${blog.firstPicture}}">
+                           <img src="http://inews.gtimg.com/newsapp_bt/0/10096408525/1000.jpg" alt=""
+                                th:src="@{${blog.firstPicture}}">
+                           <!--                        <img src="static/img/1.jpg" alt="">-->
+                       </a>
+                       <div class="content">
+                           <a class="header m-link" target="_blank" th:href="@{'/blog/'+${blog.bid}}"
+                              th:text="${blog.title}">【Springboot】thymeleaf + SpringMVC 实现页面局部更新</a>
+                           <div class="description m-text">
+                               <a href="#" class="m-link" target="_blank" th:href="@{'/blog/'+${blog.bid}}"
+                                  th:text="${blog.summary}">
+                                   如果使用JSP实现页面局部更新动画，还要把代码抽取出来放到一个新的jsp文件中，但是用thymeleaf就很简单了。
+                                   先看下要实现的功能。
+                                   在输入框中输入名字，在下方动态显示。
+
+                                   在实际应用中实现页面动态加载的话，可以相应的把显示名字的部分替换成要更新的部分即可。例如实现分页的时候，只刷新列表部分。
+                                   index.html
+
+                                   load：ajax请求。具体用法参考官方文档。
+                                   th:fragment ：...
+                               </a>
+                           </div>
+                           <div class="extra">
+                               <div class="ui m-inline-block">
+                                   <img class="ui mini circular image m-circular-mini m-inline-block"
+                                        src="http://inews.gtimg.com/newsapp_bt/0/10096408525/1000.jpg"
+                                        th:src="@{${blog.user.avatar}}"
+                                        alt="">
+                                   <a href="#" class="icon m-link"  th:href="@{'/console/'+${blog.user.userName}}" target="_blank" th:text="${blog.user.nickName}">江小举</a>
+                               </div>
+                               <div class="ui m-inline-block">
+                                   <i class="calendar alternate icon"></i> <span
+                                       th:text="${#dates.format(blog.createTime,'yyyy-MM-dd HH:mm:ss')}">2020-4-28 22:59:01</span>
+                               </div>
+                               <div class="ui m-inline-block"><i class="eye icon"></i><span
+                                       th:text="${blog.views}">2019</span></div>
+                               <div class="ui m-inline-block right floated">
+                                   <a class="m-margin-r-small"
+                                      target="_blank"
+                                      th:href="@{/blog/edit/{bid}(bid=${blog.bid})}"
+                                      th:attr="data-bid=${blog.bid}"
+                                      th:if="${session.user!=null and session.user.uid == blog.uid}"
+                                   >编辑</a>
+                                   <a class="red-link"
+                                      onclick="blogEdit(this)" data-method="delete"
+                                      th:attr="data-bid=${blog.bid}"
+                                      th:if="${session.user!=null && session.user.uid == blog.uid}"
+                                   >删除</a>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <!--/*-->
+                   <div class="item">
+                       <div class="image">
+                           <img src="http://inews.gtimg.com/newsapp_bt/0/10096408525/1000.jpg" alt="">
+                       </div>
+                       <div class="content">
+                           <a class="header m-link">【Springboot】thymeleaf + SpringMVC 实现页面局部更新</a>
+                           <div class="description m-text hover">
+                               如果使用JSP实现页面局部更新动画，还要把代码抽取出来放到一个新的jsp文件中，但是用thymeleaf就很简单了。
+                               先看下要实现的功能。
+                               在输入框中输入名字，在下方动态显示。
+
+                               在实际应用中实现页面动态加载的话，可以相应的把显示名字的部分替换成要更新的部分即可。例如实现分页的时候，只刷新列表部分。
+                               index.html
+
+                               load：ajax请求。具体用法参考官方文档。
+                               th:fragment ：...
+                           </div>
+                           <div class="extra">
+                               <div class="ui m-inline-block">
+                                   <img class="ui mini circular image m-circular-mini m-inline-block"
+                                        src="http://inews.gtimg.com/newsapp_bt/0/10096408525/1000.jpg" alt="">
+                                   <a href="#" class="icon m-link">江小举</a>
+                               </div>
+                               <div class="ui m-inline-block">
+                                   <i class="calendar alternate icon"></i>2020-4-28 22:59:01
+                               </div>
+                               <div class="ui m-inline-block"><i class="eye icon"></i>2019</div>
+                               <div class="ui m-inline-block right floated">
+                                   <a href="#" class="m-margin-r-small">编辑</a>
+                                   <a href="#" class="red-link">删除</a>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="item">
+                       <div class="image">
+                           <img src="http://inews.gtimg.com/newsapp_bt/0/10096408525/1000.jpg" alt="">
+                       </div>
+                       <div class="content">
+                           <a class="header m-link">【Springboot】thymeleaf + SpringMVC 实现页面局部更新</a>
+                           <div class="description m-text hover">
+                               如果使用JSP实现页面局部更新动画，还要把代码抽取出来放到一个新的jsp文件中，但是用thymeleaf就很简单了。
+                               先看下要实现的功能。
+                               在输入框中输入名字，在下方动态显示。
+
+                               在实际应用中实现页面动态加载的话，可以相应的把显示名字的部分替换成要更新的部分即可。例如实现分页的时候，只刷新列表部分。
+                               index.html
+
+                               load：ajax请求。具体用法参考官方文档。
+                               th:fragment ：...
+                           </div>
+                           <div class="extra">
+                               <div class="ui m-inline-block">
+                                   <img class="ui mini circular image m-circular-mini m-inline-block"
+                                        src="http://inews.gtimg.com/newsapp_bt/0/10096408525/1000.jpg" alt="">
+                                   <a href="#" class="icon m-link">江小举</a>
+                               </div>
+                               <div class="ui m-inline-block">
+                                   <i class="calendar alternate icon"></i>2020-4-28 22:59:01
+                               </div>
+                               <div class="ui m-inline-block"><i class="eye icon"></i>2019</div>
+                               <div class="ui m-inline-block right floated">
+                                   <a href="#" class="m-margin-r-small">编辑</a>
+                                   <a href="#" class="red-link">删除</a>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <!--*/-->
+               </div>
+            </div>
+        </div>
+
+        <div class="ui segment">
+           <div class="ui">
+               <h4 class="ui">最近评论</h4>
+           </div>
+            <div class="ui divider"></div>
+            <div class="ui content">
+                <div class="ui feed">
+                    <div class="event" th:each="comment:${comments}">
+                        <div class="label">
+                            <img src="static/img/35.jpg" th:src="@{${comment.user.avatar}}">
+                        </div>
+                        <div class="content">
+                            <div class="summary">
+                                <a class="user" target="_blank" th:href="@{'/console/'+${comment.user.userName}}" th:text="${comment.user.nickName}">
+                                    Elliot Fu
+                                </a> 评论了你的博客
+                                <div class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm:ss')}">
+                                    1 Hour Ago
+                                </div>
+                            </div>
+                            <div class="extra text">
+                                <a th:href="@{'/blog/'+${comment.bid}}" target="_blank" class="header m-link" th:text="${comment.blogTitle}" style="color: black">【Springboot】thymeleaf + SpringMVC 实现页面局部更新</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!--/*-->
+                    <div class="event">
+                        <div class="label">
+                            <img src="static/img/35.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="summary">
+                                <a class="user">
+                                    Elliot Fu
+                                </a> 评论了你的博客
+                                <div class="date">
+                                    1 Hour Ago
+                                </div>
+                            </div>
+                            <div class="extra text">
+                                <a class="header m-link">【Springboot】thymeleaf + SpringMVC 实现页面局部更新</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="label">
+                            <img src="static/img/35.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="summary">
+                                <a class="user">
+                                    Elliot Fu
+                                </a> 评论了你的博客
+                                <div class="date">
+                                    1 Hour Ago
+                                </div>
+                            </div>
+                            <div class="extra text">
+                                <a class="header m-link">【Springboot】thymeleaf + SpringMVC 实现页面局部更新</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="label">
+                            <img src="static/img/35.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="summary">
+                                <a class="user">
+                                    Elliot Fu
+                                </a> 评论了你的博客
+                                <div class="date">
+                                    1 Hour Ago
+                                </div>
+                            </div>
+                            <div class="extra text">
+                                <a class="header m-link">【Springboot】thymeleaf + SpringMVC 实现页面局部更新</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="label">
+                            <img src="static/img/35.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="summary">
+                                <a class="user">
+                                    Elliot Fu
+                                </a> 评论了你的博客
+                                <div class="date">
+                                    1 Hour Ago
+                                </div>
+                            </div>
+                            <div class="extra text">
+                                <a class="header m-link">【Springboot】thymeleaf + SpringMVC 实现页面局部更新</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="label">
+                            <img src="static/img/35.jpg">
+                        </div>
+                        <div class="content">
+                            <div class="summary">
+                                <a class="user">
+                                    Elliot Fu
+                                </a> 评论了你的博客
+                                <div class="date">
+                                    1 Hour Ago
+                                </div>
+                            </div>
+                            <div class="extra text">
+                                <a class="header m-link">【Springboot】thymeleaf + SpringMVC 实现页面局部更新</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--*/-->
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+<footer th:replace="_fragments::footer"></footer>
+
+
+<script th:replace="_fragments::script">
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+</script>
+
+
+<script>
+
+
+    function blogEdit(obj) {
+        var bid = $(obj).data('bid');
+
+        $.ajax({
+            url: '[[@{/blog/edit/}]]'+bid,
+            type: 'delete',
+            contentType: "application/json",//设置请求参数类型为json字符串
+            dataType: "json",
+            success: function (result) {
+                if(result.flag==true) {
+                    window.location.reload();
+                }
+            },
+
+        });
+
+    }
+
+</script>
+
+
+
+
+
+</body>
+</html>

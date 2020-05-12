@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::head('register')">
+    <meta charset="UTF-8">
+    <title>register</title>
+    <link rel="stylesheet" href="../static/plugin/semanticui/semantic.min.css"
+          th:href="@{/plugin/semanticui/semantic.css}">
+    <script src="../static/js/jquery-3.4.1.min.js" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script src="../static/plugin/semanticui/semantic.min.js" th:src="@{/plugin/semanticui/semantic.min.js}"></script>
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+
+<!--导航栏-->
+<div class="ui attached" th:replace="_fragments::nav(0)">
+    <div class="ui fluid  container ">
+        <div class="ui huge sixteen wide  grid secondary pointing  stackable menu padded">
+            <a href="#" class="ui item menu toggle icon button m-right-top m-mobile-show">
+                <i class="sidebar icon"></i>
+            </a>
+            <div class="ui header item m-text-large m-item m-mobile-hide m-padded-b-tiny m-text-thin m-opacity-mini">
+                Blog
+            </div>
+            <a href="#" class="ui large item m-item m-mobile-hide"><i class="small home icon"></i>Home</a>
+            <a href="#" class="ui large item m-item m-mobile-hide"><i class="small file alternate outline icon"></i>Blog</a>
+            <a href="#" class="ui large item m-item m-mobile-hide"><i class="small envelope icon"></i>Message</a>
+            <div class="ui item  right floated m-margin-r m-item m-mobile-hide" style="height: 48px">
+                <div>
+                    <a href="#" class="m-margin-r m-black">登录</a>
+                    <a href="#" class="m-margin-r m-black">注册</a>
+                </div>
+                <a href="#" class="m-margin-r-medium"><img src="../static/img/35.jpg" class="ui avatar image" style=""></a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="ui five column centered stackable grid">
+    <div class="ui  column m-margin-top-large " style="min-width: 480px">
+        <div class="ui container m-margin">
+            <h2 class="ui center aligned header m-text m-teal">用户注册</h2>
+        </div>
+        <div class="ui container m-shadow-small">
+
+            <form class="ui form" method="post" action="#">
+                <div class="ui  segment">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="username" class="tooltip" placeholder="用户名"
+                                   data-content="由6-16个字母或数字组成，必须以字母开头">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="tag icon"></i>
+                            <input type="text" name="nickname" class="tooltip" placeholder="昵称" data-content="不能为空">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="password" class="tooltip" placeholder="密码"
+                                   data-content="长度必须为8-16个字符">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="repeatpassword" class="tooltip" placeholder="确认密码">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="envelope icon"></i>
+                            <input type="email" name="email" class="tooltip" placeholder="邮箱">
+                        </div>
+                    </div>
+                    <div class="field container">
+
+                        <div class="ui two column grid">
+                            <div class="ui column">
+                                <div class="ui left icon input">
+                                    <i class="check icon"></i>
+                                    <input type="text" name="checkcode" class="tooltip" placeholder="验证码"
+                                           data-content="请填写验证码">
+                                </div>
+                            </div>
+                            <div class="ui column">
+                                <a href="javascript:void(0)" id="checkCode"><img src="static/img/checkcode.png"
+                                                                                 th:src="@{/user/checkCode}"
+                                                                                 class="rounded checkcode tooltip"
+                                                                                 data-content="点击刷新验证码" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="register-btn" class="ui fluid large teal button" type="button">注 册</button>
+                </div>
+<div class="ui error message"></div>
+            </form>
+        </div>
+
+
+        <div class="ui container m-margin-top-small">
+            <div class="ui bottom attached warning message container center aligned">
+                <i class="icon help"></i>
+                已经有账号了？ <a href="#" th:href="@{/login}">这里登录</a>。
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">注册成功</div>
+    <div class="content">
+        <div class="description">
+            是否跳转到登录界面
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui black deny button">
+            否
+        </div>
+        <div class="ui positive right labeled icon button">
+            是
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<footer th:replace="_fragments::footer"></footer>
+
+<script th:replace="_fragments::script">
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+</script>
+
+<script>
+
+    $('#btn').click(function () {
+        $('.ui.modal').modal({
+            onDeny    : function(){
+                window.alert('Wait not yet!');
+                return false;
+            },
+            onApprove : function() {
+                window.location = '[[@{/login}]]';
+            }
+        }).modal('show')
+        ;
+    });
+
+    $(document).keypress(function (e) {
+        if(e.which==13) {
+            $('#register-btn').click();
+        }
+
+    });
+
+    // 开启关闭错误警告
+    $('.message .close')
+        .on('click', function () {
+            $(this)
+                .closest('.message')
+                .transition('fade')
+            ;
+        });
+    // 提示
+    $('.tooltip').popup({
+        // popup: $('.wechat-qr'),
+        position: 'right center',
+        on: 'hover'
+    });
+
+
+
+
+    $.fn.form.settings.rules.checkUsername = function () {
+        var username = $('[name="username"]').val();
+        // console.log(username);
+        var flag = false;
+        $.post({
+            url: '[[@{/user/findUsername}]]',
+            async: false,
+            data: {
+                'userName': username
+            },
+            success: function (data) {
+                flag = data.flag;
+            }
+        })
+        return flag;
+    }
+
+    $.fn.form.settings.rules.checkEmail = function () {
+        var email = $('[name="email"]').val();
+        // console.log(email);
+        var flag = false;
+        $.post({
+            url: '[[@{/user/findEmail}]]',
+            async: false,
+            data: {
+                'email': email
+            },
+            success: function (data) {
+                // console.log(data);
+                flag = data.flag;
+            }
+        })
+        return flag;
+    }
+
+    $.fn.form.settings.rules.checkCode = function () {
+        var checkcode = $('[name="checkcode"]').val();
+        var flag = false;
+        $.post({
+            url: '[[@{/user/checkCode}]]',
+            async: false,
+            data: {
+                'checkCode': checkcode
+            },
+            success: function (data) {
+                flag = data.flag;
+            }
+        })
+        return flag;
+    }
+
+    $('.ui.form').form({
+        // inline: true,
+        fields: {
+            password: {
+                identifier: 'password',
+                rules: [
+                    {
+                        type: 'regExp',
+                        value: /^\w{8,16}$/i,
+                        prompt: '密码不合法，请重新输入'
+                    }
+                ]
+            },
+            repeatpassword: {
+                identifier: 'repeatpassword',
+                rules: [
+                    {
+                        type: 'match[password]',
+                        prompt: '密码不匹配'
+                    }
+                ]
+            },
+            nickname: {
+                identifier: 'nickname',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '昵称不能为空'
+                    }
+                ]
+            },
+            username: {
+                identifier: 'username',
+                rules: [
+                    {
+                        type: 'regExp',
+                        value: /^[a-zA-Z]\w{5,15}$/i,
+                        prompt: '用户名不合法'
+                    },
+                    {
+                        type: 'checkUsername',
+                        prompt: '用户名已经被注册 <a href=[[@{/login}]]>点击登录?</a> '
+                    }
+                ]
+            },
+            email: {
+                identifier: 'email',
+                rules: [
+                    {
+                        type: 'email',
+                        prompt: '请输入合法的邮箱'
+                    },
+                    {
+                        type: 'checkEmail',
+                        prompt: '邮箱已经注册， <a href=[[@{/login}]]>点击登录?</a> '
+                    }
+                ]
+            },
+            checkcode: {
+                identifier: 'checkcode',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '请填写验证码'
+                    },
+                    {
+                        type: 'checkCode',
+                        prompt: '验证码填写错误'
+                    }
+                ]
+            }
+        }
+    })
+
+
+
+    $('#checkCode').click(function () {
+        var src = '[[@{/user/checkCode}]]' + '?time=' + new Date().getTime();
+        $(this).children('img').attr('src', src);
+    });
+
+
+    $('#register-btn').click(function () {
+
+        var flag = $('.ui.form').form('validate form');
+        console.log(flag);
+        if (flag) {
+            $.post('[[@{/user/register}]]', {
+                'userName': $('[name="username"]').val(),
+                'nickName': $('[name="nickname"]').val(),
+                'email': $('[name="email"]').val(),
+                'password': $('[name="password"]').val()
+            }, function (data) {
+                console.log(data)
+
+                if (data.flag == false)
+                    alert(data.msg)
+                else {
+                    $('.ui.modal').modal({
+                        onDeny    : function(){
+                        },
+                        onApprove : function() {
+                            window.location = '[[@{/login}]]';
+                        }
+                    }).modal('show')
+                    ;
+
+                }
+            })
+        }
+    })
+</script>
+
+</body>
+</html>

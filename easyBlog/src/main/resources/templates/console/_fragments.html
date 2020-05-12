@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <title th:text="${title}">fragments</title>
+    <link rel="stylesheet" href="../../static/plugin/editormd/css/editormd.css" th:href="@{/static/plugin/editormd/css/editormd.css}">
+    <link rel="stylesheet" href="../../static/plugin/semanticui/semantic.min.css" th:href="@{/static/plugin/semanticui/semantic.min.css}">
+    <script src="../../static/js/jquery-3.4.1.min.js" th:src="@{/static/js/jquery-3.4.1.min.js}"></script>
+
+    <link rel="stylesheet" href="../../static/css/typo.css" th:href="@{/static/css/typo.css}">
+    <link rel="stylesheet" href="../../static/plugin/tocbot/tocbot.css" th:href="@{/static/plugin/tocbot/tocbot.css}">
+    <link rel="stylesheet" type="text/css" href="../../static/plugin/simditor/styles/simditor.css" th:href="@{/static/plugin/simditor/styles/simditor.css}">
+
+
+    <script src="../../static/plugin/semanticui/semantic.min.js" th:src="@{/static/plugin/semanticui/semantic.min.js}"></script>
+    <link rel="stylesheet" href="../../static/css/animate.css" th:href="@{/static/css/animate.css}">
+
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/static/css/me.css}">
+    <link rel="stylesheet" href="../../static/plugin/prism/prism.css" th:href="@{/static/plugin/prism/prism.css}">
+</head>
+<body>
+
+
+<div class="ui pointing menu" th:fragment="consolemenu(n)" >
+    <a class="item" th:classappend="${n==1}?'active'" th:href="@{'/console/'+${user.userName}}">
+        主页
+    </a>
+    <a class="item" th:classappend="${n==2}?'active'" th:if="${session.user!=null and session.user.uid == user.uid }" th:href="@{'/console/'+${user.userName}+'/blog'}">
+        博客管理
+    </a>
+    <a class="item" th:classappend="${n==3}?'active'" th:if="${session.user!=null and session.user.uid == user.uid }" th:href="@{'/console/'+${user.userName}+'/setting'}">
+        个人信息
+    </a>
+
+</div>
+
+
+
+<script th:fragment="script">
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.ui.dropdown').dropdown({
+        on:'hover'
+    });
+
+
+  function logout() {
+      console.log('logout')
+      $.post('[[@{/user/logout}]]','',function (data) {
+          window.location.reload();
+      })
+  }
+
+</script>
+</body>
+</html>

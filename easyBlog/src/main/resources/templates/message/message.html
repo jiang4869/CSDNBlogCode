@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::head(message)">
+    <meta charset="UTF-8">
+    <title>message</title>
+    <link rel="stylesheet" href="../../static/plugin/semanticui/semantic.min.css">
+    <script src="../../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../../static/plugin/semanticui/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/plugin/simditor/styles/simditor.css"/>
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+<body>
+<!--导航栏-->
+<div class="ui attached" th:replace="_fragments::nav(3)">
+    <div class="ui fluid  container ">
+        <div class="ui huge sixteen wide  grid secondary pointing  stackable menu padded">
+            <div class="ui header item m-text-large m-padded-b-tiny m-text-thin m-opacity-mini">Blog</div>
+            <a href="#" class="ui large item"><i class="small home icon"></i>Home</a>
+            <a href="#" class="ui large item"><i class="small file alternate outline icon"></i>Blog</a>
+            <a href="#" class="ui large item"><i class="small envelope icon"></i>Message</a>
+            <div class="item buttons">
+                <a href="#" class="ui basic button  m-margin-r-small">登录</a>
+                <a href="#" class="ui basic button ">注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="ui    m-margin-top-large m-margin" >
+    <div class="ui  container animated container">
+
+        <div class="ui segment">
+            <h1 class="ui dividing teal header">留言板</h1>
+            <div id="message-form" >
+                <form action="#" class="ui form">
+                    <input type="hidden" name="parentMessageId" value="-1">
+                    <input type="hidden" name="replyMessageId" value="-1">
+                    <input type="hidden" name="uid" value="-1" th:value="${session.user != null ? session.user.uid : -1}">
+                    <input type="hidden" name="avatar" value="-1" th:value="${session.user != null ? session.user.avatar : -1}">
+                    <div class="ui fluid container m-margin-tb" id="editorcontainer">
+                        <textarea id="editor" class="replysimditor" name="content" placeholder="说点什么..."></textarea>
+                    </div>
+                    <div class="fields">
+
+                        <div class="field m-mobile-wide m-margin-bottom-small">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="nickname" placeholder="姓名" th:value="${session.user != null ? session.user.nickName:''}">
+                            </div>
+                        </div>
+
+                        <div class="field m-mobile-wide m-margin-bottom-small">
+                            <div class="ui left icon input">
+                                <i class="mail icon"></i>
+                                <input type="text" name="email" placeholder="邮箱" th:value="${session.user != null ? session.user.email:''}">
+                            </div>
+                        </div>
+
+
+                        <div class="field  m-margin-bottom-small m-mobile-wide">
+                            <button id="messagepost-btn" type="button" class="ui teal button m-mobile-wide"><i
+                                    class="edit icon"></i>发布
+                            </button>
+                        </div>
+
+                        <div class="ui toggle  checkbox">
+                            <div style="height:10px"></div>
+                            <input type="checkbox" name="remind" class="tooltip" data-content="选择后，当别人回复了你的留言，你将会收到一封邮件提醒" tabindex="0">
+                            <label>回复通知</label>
+                        </div>
+                    </div>
+                    <div class="ui error message"></div>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="ui">
+            <div th:fragment="messagelist" id="messagelist">
+
+                <div class="ui threaded teal comments segment m-shadow-small" style="max-width: 100%"
+                     th:each="message,stat:${messages}">
+                    <!--                        <h3 class="ui  dividing header"><span class="ui ">1楼</span></h3>-->
+                    <div class="comment">
+                        <a href="javascript:void(0)" class="avatar">
+                            <img src="static/img/35.jpg" th:src="@{${message.avatar}}">
+                        </a>
+                        <div class="content">
+                            <a href="javascript:void(0)" class="author" th:text="${message.nickName}">Elliot
+                                Fu</a>
+                            <div class="metadata">
+                                    <span class="date"
+                                          th:text="${#dates.format(message.createTime,'yyyy-MM-dd HH:mm:ss')}">Yesterday at 12:30AM</span>
+                            </div>
+                            <div class="text">
+                                <p th:utext="${message.content}">This has been very useful for my research. Thanks as
+                                    well!</p>
+                            </div>
+                            <div class="actions">
+                                <a  onclick="reply(this)" class="reply" th:attr="data-messageid=${message.mid},data-nickname=${message.nickName},
+                                    data-parentmessageid=${message.parentMessageId!=null ? message.parentMessageId:message.mid}"
+                                >回复</a>
+                                <a onclick="Delete(this)" class="delete"
+                                   th:attr="data-messageid=${message.mid}"
+                                   th:if="${session.user}!=null and ${session.user.uid}==${message.uid} "
+                                >删除</a>
+                            </div>
+
+                        </div>
+                        <div class="comments" >
+                            <div class="comment" th:each="reply,rstat:${message.replyMessages}">
+                                <a href="javascript:void(0)" class="avatar">
+                                    <img src="static/img/35.jpg" th:src="@{${reply.avatar}}">
+                                </a>
+                                <div class="content">
+                                    <a href="javascript:void(0)" class="author" >
+                                        <span th:text="${reply.nickName}">Jenny Hess</span>
+                                        &nbsp;<span th:text="'  @' + ${reply.replyToMessage.nickName}" class="m-teal">@ 小白</span>
+                                    </a>
+                                    <div class="metadata">
+                                        <span class="date">Just now</span>
+                                    </div>
+                                    <div class="text" th:utext="${reply.content}">
+                                        Elliot you are always so right :)
+                                        <img src="static/img/35.jpg">
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply" onclick="reply(this)"
+                                           th:attr="data-messageid=${reply.mid},data-nickname=${reply.nickName},
+                                               data-parentmessageid=${reply.parentMessageId!=null?reply.parentMessageId:reply.mid}"
+                                        >回复</a>
+                                        <a onclick="Delete(this)" class="delete"
+                                           th:attr="data-messageid=${reply.mid}"
+                                           th:if="${session.user!=null && session.user.uid == reply.uid}">删除</a>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--/*-->
+                <div class="ui threaded teal comments segment m-shadow-small" style="max-width: 100%">
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="static/img/35.jpg">
+                        </a>
+                        <div class="content">
+                            <a class="author">Matt
+                                <span class="ui mini basic visitComment left pointing label m-padded-mini">访客</span>
+                            </a>
+                            <div class="metadata">
+                                <span class="date">Today at 5:42PM</span>
+                            </div>
+                            <div class="text">
+                                How artistic!
+                            </div>
+                            <div class="actions">
+                                <a class="reply">回复</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="ui threaded teal comments segment m-shadow-small" style="max-width: 100%">
+                    <!--                        <h3 class="ui dividing header">三楼</h3>-->
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="static/img/35.jpg">
+                        </a>
+                        <div class="content">
+                            <a class="author">Matt
+                                <span class="ui mini basic visitComment left pointing label m-padded-mini">访客</span>
+                            </a>
+                            <div class="metadata">
+                                <span class="date">Today at 5:42PM</span>
+                            </div>
+                            <div class="text">
+                                How artistic!
+                            </div>
+                            <div class="actions">
+                                <a class="reply">回复</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--*/-->
+
+
+                <!--                分页菜单-->
+                <div class="ui pagination menu m-margin-top" th:if="${page.pages != 0}">
+                    <a class="item" onclick="changePage(this)" th:attr="data-pagenum=${page.current - 1 >1?page.current -1: 1}"><i class="angle left icon"></i></a>
+                    <a class="item" th:each="i:${#numbers.sequence(page.begin,page.end)}" onclick="changePage(this)" th:attr="data-pagenum=${i}" th:text="${i}" th:classappend="${i==page.current?'active':''}">1</a>
+                    <!--/*-->
+                    <a class="item">10</a>
+                    <a class="item">11</a>
+                    <a class="item">12</a>
+                    <!--*/-->
+                    <a class="item" onclick="changePage(this)" th:attr="data-pagenum=${page.current + 1 > page.pages?page.pages: page.current + 1}"><i class="angle right icon"></i></a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<footer th:replace="_fragments::footer"></footer>
+
+<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="../../static/plugin/simditor/js/module.js"
+        th:src="@{/plugin/simditor/js/module.js}"></script>
+<script type="text/javascript" src="../../static/plugin/simditor/js/hotkeys.js"
+        th:src="@{/plugin/simditor/js/hotkeys.js}"></script>
+<script type="text/javascript" src="../../static/plugin/simditor/js/uploader.js"
+        th:src="@{/plugin/simditor/js/uploader.js}"></script>
+<script type="text/javascript" src="../../static/plugin/simditor/js/simditor.js"
+        th:src="@{/plugin/simditor/js/simditor.js}"></script>
+
+
+
+<script th:replace="_fragments::script">
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+</script>
+<script>
+    // 开启复选框的全部功能
+    $('.ui.checkbox').checkbox();
+
+    $('.tooltip').popup({
+        // popup: $('.wechat-qr'),
+        position: 'right center',
+        on: 'hover'
+    });
+
+    var editor = new Simditor({
+        textarea: $('#editor'),
+        upload: {
+            url: '[[@{/fileupload/simditor}]]', //文件上传的接口地址
+            fileKey: 'upload', //server端获取文件数据的參数名
+            connectionCount: 3,
+            leaveConfirm: '正在上传文件'
+        }
+    });
+
+
+
+    $('.ui.form').form({
+        fields: {
+            content: {
+                identifier: 'content',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '留言内容不能为空'
+                    }
+                ]
+            },
+            email: {
+                identifier: 'email',
+                rules: [
+                    {
+                        type: 'email',
+                        prompt: '邮箱格式不符合要求'
+                    }
+                ]
+            },
+            nickName:{
+                identifier:'nickname',
+                rules:[
+                    {
+                        type:'empty',
+                        prompt:'请填写昵称'
+                    }
+                ]
+            }
+        }
+    })
+
+
+
+    function clear() {
+        $('[name="parentMessageId"]').val('-1');
+        $('[name="replyMessageId"]').val('-1');
+        $(".simditor-placeholder").html('说点什么');
+        $('.simditor-body').html('');
+        $('#remind').removeAttr('checked');
+    }
+
+
+    $('#messagepost-btn').click(function () {
+        var flag = $('.ui.form').form('validate form');
+        console.log('validate from');
+        console.log(flag);
+        if (flag) {
+            $('#messagelist').load('[[@{/message/post}]]', {
+                'uid': $('[name="uid"]').val(),
+                'content': $('[name="content').val(),
+                'parentMessageId': $('[name="parentMessageId"]').val(),
+                'replyMessageId': $('[name="replyMessageId"]').val(),
+                'email': $('[name="email"]').val(),
+                'avatar': $('[name="avatar"]').val(),
+                'nickName': $('[name="nickname"]').val(),
+                'remind': $('[name="remind"]').prop('checked'),
+            }, function (data) {
+                if(data.flag=true) {
+                    alert('留言成功');
+                }
+                window.location.reload();
+                clear();
+            })
+        }
+    })
+
+
+    function reply (obj) {
+
+        var messageId = $(obj).data('messageid');
+        var parentMessageId = $(obj).data('parentmessageid');
+        var nickName = $(obj).data('nickname');
+
+        $('[name="parentMessageId"]').val(parentMessageId);
+        $('[name="replyMessageId"]').val(messageId);
+
+        var top = $(".ui.form").offset().top;
+        $(".simditor-placeholder").html("");
+        $(".simditor-placeholder").html("@" + nickName);
+        $('.simditor-body').focus();
+
+        $(window).scrollTo(top, 500);
+    }
+
+
+    function Delete(obj) {
+        var messageId = $(obj).data('messageid');
+        $('#messagelist').load('[[@{/message/delete}]]', {
+            'mid': messageId,
+        }, function (data) {
+
+        })
+    }
+
+    function changePage(obj) {
+        var pageNum=$(obj).data('pagenum');
+        var bid= $('[name="bid"]').val();
+        $('#messagelist').load('[[@{/message/list/}]]'+pageNum, {
+        }, function (data) {
+
+        })
+    }
+
+</script>
+</body>
+</html>

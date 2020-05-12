@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/_fragments::head">
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <link rel="stylesheet" href="../../static/plugin/semanticui/semantic.min.css">
+    <script src="../../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../../static/plugin/semanticui/semantic.min.js"></script>
+    <script src="../../static/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+<body>
+
+<div class="ui inverted left fixed vertical menu container overflow m-admin-menu" th:replace="admin/_fragments::consolemenu(3)">
+    <div class="m-margin-tb-large">
+        <img src="../../static/img/35.jpg" alt="" class="ui tiny centered circular image">
+        <p class="ui header text center aligned m-margin-top-large" style="color: white">管理员:   <span>jiang</span></p>
+    </div>
+
+    <a class="item" style="font-size: 1.2em">
+        <p class="header">Dashboard</p>
+    </a>
+
+    <div class="item " style="font-size: 1.2em">
+        <p class="header">User</p>
+        <div class="menu">
+            <a href="#" class="active item">userlist</a>
+        </div>
+    </div>
+    <div class="item" style="font-size: 1.2em">
+        <p class="header">Blog</p>
+        <div class="menu">
+            <a href="#" class="item">BlogList</a>
+        </div>
+    </div>
+    <div class="ui item " style="border-color: black">
+        <div class="ui inverted very basic button ">注销</div>
+    </div>
+</div>
+
+<div class="article">
+    <div class="ui segment right aligned">
+        <img src="static/img/35.jpg" alt="" class="ui avatar image">
+
+    </div>
+    <div class="m-padded-lr" >
+
+        <div class="ui fluid container">
+            <table class="ui large padded selectable striped table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>用户昵称</th>
+                    <th>博客</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="blog,stat:${blogList}">
+                    <td th:text="${(page.current - 1)*page.size + stat.count}">1</td>
+                    <td ><a href="#" target="_blank" style="color: black!important;" th:href="@{/console/{userName}(userName=${blog.user.userName})}" th:text="${blog.user.userName}">September 14, 2013</a></td>
+                    <td><a href="#" target="_blank" th:href="@{'/blog/'+${blog.bid}}" th:text="${blog.title}" class="m-text" style="color: #1f1f1f">【Springboot】thymeleaf + SpringMVC 实现页面局部更新</a></td>
+                    <td th:text="${#dates.format(blog.createTime,'yyyy-MM-dd HH:mm:ss')}">2020-05-1</td>
+
+                    <td >
+                        <a class="ui red basic button"
+                           onclick="blogEdit(this)" data-method="delete"
+                           th:attr="data-bid=${blog.bid}"
+                           th:if="${session.admin!=null}"
+                        >删除</a>
+
+                    </td>
+                </tr>
+                <!--/*-->
+                <tr>
+                    <td>1</td>
+                    <td>【Springboot】thymeleaf + SpringMVC 实现页面局部更新</td>
+                    <td>2020-05-1</td>
+                    <td colspan="2"><button class="ui teal basic button ">修改</button><button class="ui red basic button">删除</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>【Springboot】thymeleaf + SpringMVC 实现页面局部更新</td>
+                    <td>2020-05-1</td>
+                    <td colspan="2"><button class="ui teal basic button ">修改</button><button class="ui red basic button">删除</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>【Springboot】thymeleaf + SpringMVC 实现页面局部更新</td>
+                    <td>2020-05-1</td>
+                    <td colspan="2"><button class="ui teal basic button ">修改</button><button class="ui red basic button">删除</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>【Springboot】thymeleaf + SpringMVC 实现页面局部更新</td>
+                    <td>2020-05-1</td>
+                    <td colspan="2"><button class="ui teal basic button ">修改</button><button class="ui red basic button">删除</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>【Springboot】thymeleaf + SpringMVC 实现页面局部更新</td>
+                    <td>2020-05-1</td>
+                    <td colspan="2"><button class="ui teal basic button ">修改</button><button class="ui red basic button">删除</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>【Springboot】thymeleaf + SpringMVC 实现页面局部更新</td>
+                    <td>2020-05-1</td>
+                    <td colspan="2"><button class="ui teal basic button ">修改</button><button class="ui red basic button">删除</button></td>
+                </tr>
+                <!--*/-->
+                </tbody>
+            </table>
+
+        </div>
+        <!--                分页菜单-->
+        <div class="ui pagination menu m-margin-top" th:if="${page.pages != 0}">
+            <a class="item" onclick="changePage(this)"
+               th:href="@{/admin/blog/list/{page}(page=${page.current - 1 >1?page.current -1: 1} )}">
+                <i class="angle left icon"></i></a>
+            <a class="item" th:each="i:${#numbers.sequence(page.begin,page.end)}" onclick="changePage(this)"
+               th:href="@{/admin/blog/list/{page}(page=${i}) }"
+               th:attr="data-pagenum=${i}" th:text="${i}"
+               th:classappend="${i==page.current?'active':''}">1</a>
+            <!--/*-->
+            <a class="item">10</a>
+            <a class="item">11</a>
+            <a class="item">12</a>
+            <!--*/-->
+            <a class="item"
+               th:href="@{/admin/blog/list/{page}(page=${page.current + 1 > page.pages?page.pages: page.current + 1}) }"
+            ><i class="angle right icon"></i></a>
+        </div>
+    </div>
+
+</div>
+<script th:replace="admin/_fragments::script"></script>
+<script>
+    $('.ui.accordion').accordion();
+    function blogEdit(obj) {
+        var bid = $(obj).data('bid');
+
+        $.ajax({
+            url: '[[@{/blog/edit/}]]'+bid,
+            type: 'delete',
+            contentType: "application/json",//设置请求参数类型为json字符串
+            dataType: "json",
+            success: function (result) {
+                if(result.flag==true) {
+                    window.location.reload();
+                }
+            },
+
+        });
+    }
+</script>
+</body>
+</html>

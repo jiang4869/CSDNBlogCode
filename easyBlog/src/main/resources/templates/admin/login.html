@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::head('login')">
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <link rel="stylesheet" href="../../static/plugin/semanticui/semantic.min.css">
+    <script src="../../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../../static/plugin/semanticui/semantic.min.js"></script>
+    <script src="../../static/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+<body>
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<div class="ui five column centered stackable grid">
+    <div class="ui  column m-margin-top-large " style="min-width: 480px">
+        <div class="ui error message" th:if="${msg!=null}" th:text="${msg}"></div>
+        <div class="ui container m-margin">
+            <h2 class="ui center aligned header m-text m-teal">管理员登录</h2>
+        </div>
+        <div class="ui container m-shadow-small">
+
+            <form class="ui large form" method="post" action="#">
+                <div class="ui  segment">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="username" placeholder="用户名">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="password" placeholder="密码">
+                        </div>
+                    </div>
+                    <div class="field container">
+
+                        <div class="ui two column grid">
+                            <div class="ui column">
+                                <div class="ui left icon input">
+                                    <i class="check icon"></i>
+                                    <input type="text" name="checkcode" placeholder="验证码">
+                                </div>
+                            </div>
+                            <div class="ui column">
+                                <a href="javascript:void(0)" id="checkCode"><img src="static/img/checkcode.png"
+                                                                                 th:src="@{/user/checkCode}"
+                                                                                 class="rounded checkcode tooltip"
+                                                                                 data-content="点击刷新验证码" alt=""></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button id="login-btn" class="ui fluid large teal button" type="button">登 录</button>
+                </div>
+
+            </form>
+        </div>
+
+
+        <div class="ui container">
+            <div class="ui bottom attached warning message container center aligned">
+                <i class="icon help"></i>
+                新用户？ <a href="#">这里注册</a>。
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<br><br><br><br><br><br><br><br><br><br>
+<footer th:replace="_fragments::footer"></footer>
+
+
+<script th:replace="_fragments::script">
+
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+</script>
+
+<script>
+
+
+
+    $('.message .close')
+        .on('click', function () {
+            $(this)
+                .closest('.message')
+                .transition('fade')
+            ;
+        })
+    ;
+    $.fn.form.settings.rules.checkCode = function () {
+        var checkcode = $('[name="checkcode"]').val();
+        var flag = false;
+        $.post({
+            url: '[[@{/user/checkCode}]]',
+            async: false,
+            data: {
+                'checkCode': checkcode
+            },
+            success: function (data) {
+                flag = data.flag;
+            }
+        })
+        return flag;
+    }
+
+
+    $('.ui.form').form({
+        inline:true,
+        keyboardShortcuts:false,
+        fields:{
+            username:{
+                identifier:'username',
+                on:`blur`,
+                rules:[
+                    {
+                        type:'empty',
+                        prompt:'请输入用户名'
+                    }
+                ]
+            },
+            password:{
+                identifier: 'password',
+                rules:[
+                    {
+                        type:'empty',
+                        prompt:'请输入密码'
+                    }
+                ]
+            },
+            checkcode:{
+                identifier: 'checkcode',
+                rules:[
+                    {
+                        type:'checkCode',
+                        prompt:'验证码填写错误'
+                    }
+                ]
+            },
+        }
+    })
+
+    $('#checkCode').click(function () {
+        // alert('hhhh')
+        var src = '[[@{/user/checkCode}]]' + '?time=' + new Date().getTime();
+        $(this).children('img').attr('src', src);
+    });
+
+    $(document).keypress(function (e) {
+        if(e.which==13) {
+            $('#login-btn').click();
+        }
+
+    })
+
+
+    $('#login-btn').click(function () {
+        var flag=$('.ui.form').form('validate form');
+        console.log(flag);
+        if (flag) {
+            $.post('[[@{/admin/login}]]', {
+                'userName': $('[name="username"]').val(),
+                'password': $('[name="password"]').val()
+            }, function (data) {
+                console.log(data)
+                if (data.flag == false)
+                    alert(data.msg)
+                else {
+                  alert('登录成功');
+                  window.location='[[@{/admin/}]]';
+                }
+            })
+        }
+    })
+</script>
+</body>
+</html>

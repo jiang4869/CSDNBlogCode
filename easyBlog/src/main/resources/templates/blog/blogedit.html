@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::head(BlogEdit)">
+    <meta charset="UTF-8">
+    <title>blogedit</title>
+    <link rel="stylesheet" href="../../static/plugin/semanticui/semantic.min.css">
+    <script src="../../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../../static/plugin/semanticui/semantic.min.js"></script>
+    <link rel="stylesheet" href="../../static/css/me.css">
+    <link rel="stylesheet" href="../../static/plugin/editormd/css/editormd.css">
+</head>
+<body>
+<!--导航栏-->
+
+<!--导航栏-->
+<div class="ui attached" th:replace="_fragments::nav(2)">
+    <div class="ui fluid  container ">
+        <div class="ui huge sixteen wide  grid secondary pointing  stackable menu padded">
+            <div class="ui header item m-text-large m-padded-b-tiny m-text-thin m-opacity-mini">Blog</div>
+            <a href="#" class="ui large item"><i class="small home icon"></i>Home</a>
+            <a href="#" class="ui large item"><i class="small file alternate outline icon"></i>Blog</a>
+            <a href="#" class="ui large item"><i class="small envelope icon"></i>Message</a>
+            <div class="ui item inverted  right floated">
+                <div class="ui icon small input">
+                    <input type="text" placeholder="请输入题目名">
+                    <i class="icon search"></i>
+                </div>
+            </div>
+            <div class="item buttons">
+                <a href="#" class="ui basic button  m-margin-r-small">登录</a>
+                <a href="#" class="ui basic button ">注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="ui  centered stackable grid   m-margin-top-large m-margin">
+    <div class="ui  eleven wide column animated fadeIn">
+        <form id="blog-form" action="#" th:action="@{/blog/edit}" method="post"  class="ui myform">
+            <input type="hidden" name="uid" th:value="${session.user.uid}">
+            <input type="hidden" name="bid" value="" th:if="${blog}!=null" th:value="${blog.bid}">
+            <input type="hidden" name="views" value="0" th:if="${blog}!=null" th:value="${blog.views}">
+
+            <div class="required field">
+                <div class="ui left labeled input" style="width: 100%">
+                    <div class="ui selection compact teal basic dropdown label tooltip" data-content="选择文章类型"
+                         style="position:absolute">
+                        <input type="hidden" value="1" name="type" th:value="${blog.typeId!=null?blog.typeId:1}">
+                        <i class="dropdown icon"></i>
+                        <div class="text">原创</div>
+                        <div class="menu" style="z-index: 10 !important;">
+                            <div th:each="blogType,stat:${blogTypes}" class="item" data-value="1" th:text="${blogType.typeName}"  th:attr="data-value=${blogType.id}">原创</div>
+                        </div>
+
+                    </div>
+                    <input style="margin-left: 5em" type="text" name="title" placeholder="标题" class="tooltip"
+                           data-content="标题不能为空" th:value="${blog.title}">
+
+                </div>
+            </div>
+            <div class="m-margin-tb"></div>
+            <div class="field" style="width: 100%">
+                <div class="ui left icon input" style="width: 100%">
+                    <i class="align justify icon"></i>
+                    <input type="text" name="summary" th:value="${blog.summary}" class="tooltip" placeholder="摘要" data-content="不能为空">
+                </div>
+            </div>
+            <div class="m-margin-tb"></div>
+
+
+            <div class="required field m-margin-top-large" id="md-content" name="contents" style="z-index: 1 !important;">
+                <textarea name="content" th:text="${blog.content}" placeholder="博客描述..." style="display: none"></textarea>
+            </div>
+
+            <div class="field" style="width: 100%">
+                <div class="ui left icon input" style="width: 100%">
+                    <label class="ui teal basic button" type="button">首图</label>
+                    <input type="text" name="firstPicture" th:value="${blog.firstPicture}" class="tooltip m-margin-r" placeholder="图片链接"
+                           data-content="不能为空">
+                    <div>
+                        <button id="firstPicture-btn" class="ui teal basic button m-margin-l hover" type="button">上传文件
+                            <input id="upfile" class="hover"
+                                   style="opacity:0;width:100%;height:100%;position:absolute;top:0;left:0" type="file"
+                                   accept="image/*"
+                                   name="upfile"/>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui image m-margin-tb">
+                <div class="ui header">首图预览</div>
+                <img class="ui image" src="" th:src="${blog.firstPicture}" id="img">
+            </div>
+
+            <div class="ui">
+                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <button type="button" id="save-btn" class="ui secondary button">保存</button>
+                <button type="button" id="publish-btn" class="ui teal button">发布</button>
+                <div class="ui toggle  checkbox m-margin-r" >
+                    <div style="height:10px"></div>
+                    <input type="checkbox" name="iscomment" th:checked="${blog.bid==null} or ${blog.isComment}eq true"  tabindex="0">
+                    <label>是否开启评论</label>
+                </div>
+                <div class="ui toggle  checkbox">
+                    <div style="height:10px"></div>
+                    <input type="checkbox" name="published" th:checked="${blog.bid==null} or ${blog.published}eq true" tabindex="0">
+                    <label>是否发布</label>
+                </div>
+
+            </div>
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+<form method="post" enctype="multipart/form-data" action="fileupload/method2" th:action="@{/fileupload/editormd}">
+    <input type="file" name="upload" style="visibility: hidden" id="#firstPicture-file">
+    <br><br>
+    <input type="submit" id="file-submit" style="display: none">
+</form>
+
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<footer th:replace="_fragments::footer"></footer>
+
+<script th:replace="_fragments::script"></script>
+
+
+<script src="..../../static/plugin/editormd/editormd.js" th:src="@{/plugin/editormd/editormd.js}"></script>
+<script>
+
+    // 开启复选框全功能
+    // 开启复选框的全部功能
+    $('.ui.checkbox').checkbox();
+
+
+    // markdown编辑器
+    var contentEditor;
+    $(function () {
+        contentEditor = editormd("md-content", {
+            width: "100%",
+            height: 640,
+            syncScrolling: "single",
+            // tocm: true, // Using [TOCM]
+            tex: true, // 开启科学公式TeX语言支持，默认关闭
+            emoji: true,//emoji表情，默认关闭
+            flowChart: true, // 开启流程图支持，默认关闭
+            // path: "../../static/plugin/editormd/lib/",
+            path: "[[@{/plugin/editormd/lib/}]]",
+            /*----------实现上传图片功能---------*/
+            imageUpload: true,
+            htmlDecode: "style,script,iframe|on*",
+            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            // imageUploadURL: "/admin/uploadImg",
+            imageUploadURL: "[[@{/fileupload/editormd}]]",
+            saveHTMLToTextarea: true,
+
+            onload: function () { //上传图片后的回调函数
+                //console.log('onload', this);
+                //this.fullscreen();
+                //this.unwatch();
+                //this.watch().fullscreen();
+                //this.width("100%");
+                //this.height(480);
+                //this.resize("100%", 640);
+            }
+            /*-------------------------------------*/
+        });
+
+    });
+
+
+
+    $('.ui.dropdown.selection').dropdown({
+        on: 'click',
+        duration: 1
+    });
+
+
+    // 上传图片
+    $('#upfile').change(function () {
+        console.log('change')
+
+        var fileName = $("#upfile").val();
+        if (fileName == null || fileName == "") {
+            alert("请选择文件");
+        } else {
+            var fileType = fileName.substr(fileName.length - 4, fileName.length);
+            var formData = new FormData();
+            formData.append("upload", $("#upfile").prop("files")[0]);
+
+            $.ajax({
+                type: "post",
+                url: "[[@{/fileupload}]]",
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data)
+                    if (data.success == 1) {
+                        $('[name="firstPicture"]').val(data.url);
+                        $('#img').attr('src', data.url);
+                    } else {
+                        alert('上传失败，请重新上传')
+                    }
+                },
+                error: function () {
+                    alert("上传失败！");
+                }
+            });
+
+        }
+
+
+    })
+
+
+    $.fn.form.settings.rules.checkContent = function () {
+        var content = $('[name="content"]').val();
+        // console.log(content);
+        var flag = true;
+        if (content == null || content.length <= 0) {
+            alert('内容不能为空');
+            flag = false;
+        }
+        console.log("contents flag is : "+flag);
+        return flag;
+    }
+
+
+    // 表单校验
+    $('.ui.myform').form({
+        inline:true,
+        fields: {
+            type: {
+                identifier: 'type',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '请选择文章类型'
+                    }
+                ]
+            },
+            title: {
+                identifier: 'title',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '请填写标题'
+                    }
+                ]
+            },
+            summary: {
+                identifier: 'summary',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '请填写文章摘要'
+                    }
+                ]
+            },
+            description: {
+                identifier: 'content',
+                rules: [
+                    {
+                        type: 'checkContent',
+                        prompt: '请填写文章内容'
+                    }
+                ]
+            },
+            firstPicture: {
+                identifier: 'firstPicture',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '请选择首图'
+                    }
+                ]
+            }
+        }
+    })
+
+    $('#publish-btn').click(function () {
+        var flag = $('.ui.myform').form('validate form');
+        console.log(flag);
+        if (flag) {
+            $.post('[[@{/blog/edit}]]', {
+                'uid':$('[name="uid"]').val(),
+                'firstPicture':$('[name="firstPicture"]').val(),
+                'content':$('[name="content"]').val(),
+                'title':$('[name="title"]').val(),
+                'summary':$('[name="summary"]').val(),
+                'published':$('[name="published"]').prop('checked'),
+                'isComment':$('[name="iscomment"]').prop('checked'),
+                'typeId':$('[name="type"]').val()
+            },function (data) {
+                console.log(data);
+                if(data.flag==true){
+                    alert('发布成功')
+                //    设计一个跳转后的界面跳转
+                    window.location='[[@{/blog/list?type=self}]]'
+                }
+            })
+        }
+    })
+
+    $('#save-btn').click(function () {
+        var flag = $('.ui.myform').form('validate form');
+        console.log(flag);
+        if (flag) {
+            $.post('[[@{/blog/edit}]]', {
+                'uid':$('[name="uid"]').val(),
+                'bid':$('[name="bid"]').val(),
+                'firstPicture':$('[name="firstPicture"]').val(),
+                'content':$('[name="content"]').val(),
+                'title':$('[name="title"]').val(),
+                'summary':$('[name="summary"]').val(),
+                'published':$('[name="published"]').prop('checked'),
+                'isComment':$('[name="iscomment"]').prop('checked'),
+                'typeId':$('[name="type"]').val()
+            },function (data) {
+                console.log(data)
+                if(data.flag==true){
+                    alert('保存成功');
+                    //    设计一个跳转后的界面跳转
+                    window.location='[[@{/blog/list?type=self}]]'
+                }
+            })
+        }
+    })
+</script>
+</body>
+</html>
+

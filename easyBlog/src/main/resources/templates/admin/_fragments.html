@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <link rel="stylesheet" href="../../static/plugin/semanticui/semantic.min.css"
+          th:href="@{/plugin/semanticui/semantic.min.css}">
+    <script src="../../static/js/jquery-3.4.1.min.js" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script src="../../static/plugin/semanticui/semantic.min.js"
+            th:src="@{/plugin/semanticui/semantic.min.js}"></script>
+    <script src="../../static/js/echarts.min.js" th:src="@{/js/echarts.min.js}"></script>
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+
+<div class="ui inverted left fixed vertical menu container overflow m-admin-menu" th:fragment="consolemenu(n)">
+    <div class="m-margin-tb-large">
+        <img src="../../static/img/35.jpg" alt="" th:src="@{${session.user.avatar}}"
+             class="ui tiny centered circular image">
+        <p class="ui header text center aligned m-margin-top-large" style="color: white">管理员:<span th:text="${session.admin.userName}">jiang</span></p>
+    </div>
+
+    <a class="item" th:classappend="${n==1}?'active'" th:href="@{/admin/}" style="font-size: 1.2em">
+        <p class="header"><i class="dashboard icon"></i>Dashboard</p>
+    </a>
+
+    <div class="item" style="font-size: 1.2em">
+        <p class="header">User</p>
+        <div class="menu">
+            <a href="#" class="item" th:classappend="${n==2}?'active'" th:href="@{/admin/userlist}">userlist</a>
+        </div>
+    </div>
+    <div class="item" style="font-size: 1.2em">
+        <p class="header">Blog</p>
+        <div class="menu">
+            <a href="#" class="item" th:classappend="${n==3}?'active'" th:href="@{/admin/bloglist}">BlogList</a>
+            <a href="#" class="item" th:classappend="${n==4}?'active'" th:href="@{/admin/commentlist}">CommentList</a>
+        </div>
+    </div>
+    <div class="item" style="font-size: 1.2em">
+        <p class="header">Message</p>
+        <div class="menu">
+            <a href="#" class="item" th:classappend="${n==5}?'active'" th:href="@{/admin/messagelist}">MessageList</a>
+        </div>
+    </div>
+
+
+
+    <div class="ui item " onclick="logout()" style="border-color: black">
+        <div class="ui inverted very basic button ">注销</div>
+    </div>
+</div>
+
+
+<script th:fragment="script">
+    $('.ui.accordion').accordion();
+
+    function logout() {
+        console.log('logout');
+        $.post('[[@{/admin/logout}]]','',function (data) {
+            window.location='[[@{/admin/login}]]';
+        })
+    }
+</script>
+</body>
+</html>
