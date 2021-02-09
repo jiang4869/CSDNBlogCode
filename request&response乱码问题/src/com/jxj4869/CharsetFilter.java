@@ -12,5 +12,5 @@ public class CharsetFilter implements Filter {
         resp.setContentType("text/html;charset=utf-8");
         chain.doFilter(req, resp);
     }
-    
+
 }

@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f5c194d8-457d-41f7-a735-66147b25cfec" name="Default Changelist" comment="" />
+    <list default="true" id="f5c194d8-457d-41f7-a735-66147b25cfec" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../JDBCTemplate/out/production/JDBCTemplate/com/jxj4869/domain/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JDBCTemplate/out/production/JDBCTemplate/com/jxj4869/domain/Student.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JDBCTemplate/out/production/JDBCTemplate/com/jxj4869/jdbctempate/JdbcTemplateDemo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JDBCTemplate/out/production/JDBCTemplate/com/jxj4869/jdbctempate/JdbcTemplateDemo$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JDBCTemplate/out/production/JDBCTemplate/com/jxj4869/jdbctempate/JdbcTemplateDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JDBCTemplate/out/production/JDBCTemplate/com/jxj4869/jdbctempate/JdbcTemplateDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JDBCTemplate/out/production/JDBCTemplate/com/jxj4869/utils/JDBCUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JDBCTemplate/out/production/JDBCTemplate/com/jxj4869/utils/JDBCUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JDBCTemplate/src/com/jxj4869/domain/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JDBCTemplate/src/com/jxj4869/domain/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JDBCTemplate/src/com/jxj4869/jdbctempate/JdbcTemplateDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JDBCTemplate/src/com/jxj4869/jdbctempate/JdbcTemplateDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JdbcDemo1/test/JdbcTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JdbcDemo1/test/JdbcTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/JdbcTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/JdbcTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../easyBlog/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../easyBlog/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../easyBlog/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../easyBlog/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../request&amp;response乱码问题/src/com/jxj4869/CharsetFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../request&amp;response乱码问题/src/com/jxj4869/CharsetFilter.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +40,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -38,6 +53,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1Xsr3c7hvqxkEJBhVRShT0gS8Sc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -49,9 +65,10 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mybatis/demo4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -66,7 +83,23 @@
       <recent name="D:\博客\JDBC系列\code\【JDBC入门】（二）JDBC对象详解以及工具类的封装\lib" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.JdbcTest.testTransaction">
+  <component name="RunManager" selected="JUnit.JdbcTest.test">
+    <configuration name="JdbcTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JdbcDemo1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.JdbcTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="JdbcTest.testDelete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JdbcDemo1" />
       <extension name="coverage">
@@ -78,22 +111,6 @@
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.JdbcTest" />
       <option name="METHOD_NAME" value="testDelete" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JdbcTest.testInsert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JdbcDemo1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.JdbcTest" />
-      <option name="METHOD_NAME" value="testInsert" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -212,11 +229,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.JdbcTest.testTransaction" />
+        <item itemvalue="JUnit.JdbcTest.test" />
         <item itemvalue="JUnit.JdbcTest.testQuery" />
+        <item itemvalue="JUnit.JdbcTest.testTransaction" />
         <item itemvalue="JUnit.JdbcTest.testUpdate" />
         <item itemvalue="JUnit.JdbcTest.testDelete" />
-        <item itemvalue="JUnit.JdbcTest.testInsert" />
       </list>
     </recent_temporary>
   </component>
@@ -244,6 +261,13 @@
       <updated>1581845444780</updated>
       <workItem from="1581845445979" duration="2391000" />
       <workItem from="1581851159572" duration="5577000" />
+      <workItem from="1582561834607" duration="247000" />
+      <workItem from="1582593323507" duration="13000" />
+      <workItem from="1583250184169" duration="1388000" />
+      <workItem from="1583251919586" duration="656000" />
+      <workItem from="1583279643592" duration="486000" />
+      <workItem from="1583289574344" duration="282000" />
+      <workItem from="1593671985511" duration="1209000" />
     </task>
     <servers />
   </component>
@@ -255,22 +279,38 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1581852793814" />
-    <state width="2517" height="39" key="GridCell.Tab.0.bottom" timestamp="1581856499319">
+    <state width="2517" height="563" key="GridCell.Tab.0.bottom" timestamp="1583289856211">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="39" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1581856499319" />
-    <state width="2517" height="39" key="GridCell.Tab.0.center" timestamp="1581856499319">
+    <state width="2517" height="563" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1583289856211" />
+    <state width="2517" height="563" key="GridCell.Tab.0.center" timestamp="1583289856211">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="39" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1581856499319" />
-    <state width="2517" height="39" key="GridCell.Tab.0.left" timestamp="1581856499319">
+    <state width="2517" height="563" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1583289856211" />
+    <state width="2517" height="563" key="GridCell.Tab.0.left" timestamp="1583289856211">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="39" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1581856499319" />
-    <state width="2517" height="39" key="GridCell.Tab.0.right" timestamp="1581856499319">
+    <state width="2517" height="563" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1583289856211" />
+    <state width="2517" height="563" key="GridCell.Tab.0.right" timestamp="1583289856211">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="39" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1581856499319" />
+    <state width="2517" height="563" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1583289856211" />
+    <state width="2517" height="492" key="GridCell.Tab.1.bottom" timestamp="1583252231389">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1583252231389" />
+    <state width="2517" height="492" key="GridCell.Tab.1.center" timestamp="1583252231389">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1583252231389" />
+    <state width="2517" height="492" key="GridCell.Tab.1.left" timestamp="1583252231389">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1583252231389" />
+    <state width="2517" height="492" key="GridCell.Tab.1.right" timestamp="1583252231389">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1583252231389" />
     <state x="781" y="342" key="SettingsEditor" timestamp="1581852935394">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -291,5 +331,16 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1581854406406" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/JdbcTest.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

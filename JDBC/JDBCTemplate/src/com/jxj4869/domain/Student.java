@@ -2,11 +2,10 @@ package com.jxj4869.domain;
 
 public class Student {
     private Integer id;
-    private Integer cid;
     private String name;
     private String gender;
-    private Integer score;
-
+    private Integer Score;
+    private MyClass myClass;
     public Integer getId() {
         return id;
     }
@@ -15,13 +14,7 @@ public class Student {
         this.id = id;
     }
 
-    public Integer getCid() {
-        return cid;
-    }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
-    }
 
     public String getName() {
         return name;
@@ -40,21 +33,29 @@ public class Student {
     }
 
     public Integer getScore() {
-        return score;
+        return Score;
     }
 
     public void setScore(Integer score) {
-        this.score = score;
+        Score = score;
+    }
+
+    public MyClass getMyClass() {
+        return myClass;
+    }
+
+    public void setMyClass(MyClass myClass) {
+        this.myClass = myClass;
     }
 
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", cid=" + cid +
                 ", name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
-                ", score=" + score +
+                ", Score=" + Score +
+                ", myClass=" + myClass +
                 '}';
     }
 }

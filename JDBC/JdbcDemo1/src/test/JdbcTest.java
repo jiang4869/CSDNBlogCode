@@ -5,15 +5,37 @@ import org.junit.Before;
 import org.junit.Test;
 import utils.JDBCUtils;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class JdbcTest {
     PreparedStatement pstmt = null;
     Connection connection = null;
     ResultSet resultSet = null;
+
+
+    @Test
+    public  void test() throws  Exception{
+//        Class.forName("com.mysql.cj.jdbc.Driver");
+        /*获得链接对象*/
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbtest?serverTimezone=UTC","root", "root");
+
+        String sql ="select * from userInfo";
+        /*创建一个statment对象*/
+        Statement statement = connection.createStatement();
+
+
+        ResultSet resultSet = statement.executeQuery(sql);
+
+        while(resultSet.next()){
+            String name=resultSet.getString("name");
+            String email=resultSet.getString("email");
+            System.out.println("name: "+name+" email: "+email);
+
+        }
+        statement.close();
+        connection.close();
+
+    }
 
     @Before
     public void init() throws SQLException {
@@ -92,14 +114,15 @@ public class JdbcTest {
         try {
             /*关闭自动提交事务*/
             connection.setAutoCommit(false);
-            String sql = "update userInfo set email=? where name=";
+            String sql = "update userInfo set email=? where name=?";
             pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, "1");
-            pstmt.setString(1, "zhangsan");
+            pstmt.setString(2, "zhangsan");
             /*手动制造错误*/
-            int num=1/0;
+
             int cnt = pstmt.executeUpdate();
             System.out.println(cnt);
+
             connection.commit();
         } catch (Exception e) {
             try {

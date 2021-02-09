@@ -1,5 +1,6 @@
 package com.jxj4869.jdbctempate;
 
+import com.jxj4869.domain.MyClass;
 import com.jxj4869.domain.Student;
 import com.jxj4869.utils.JDBCUtils;
 import org.junit.Test;
@@ -26,7 +27,7 @@ public class JdbcTemplateDemo {
         PreparedStatement pstmt = connection.prepareStatement(sql);
         ResultSet resultSet = pstmt.executeQuery();
         resultSet.next();
-        s1.setCid(resultSet.getInt("cid"));
+        //s1.setCid(resultSet.getInt("cid"));
         s1.setGender(resultSet.getString("gender"));
         s1.setId(resultSet.getInt("id"));
         s1.setName(resultSet.getString("name"));
@@ -91,16 +92,20 @@ public class JdbcTemplateDemo {
     @Test
     public void testFindAll1() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(JDBCUtils.getDataSource());
-        String sql = "select * from student";
+        String sql = "select class.cname ,student.* from student ,class where student.cid=class.id";
         List<Student> list = jdbcTemplate.query(sql, new RowMapper<Student>() {
             @Override
             public Student mapRow(ResultSet resultSet, int i) throws SQLException {
                 Student s1 = new Student();
-                s1.setCid(resultSet.getInt("cid"));
+                //s1.setCid(resultSet.getInt("cid"));
                 s1.setGender(resultSet.getString("gender"));
                 s1.setId(resultSet.getInt("id"));
                 s1.setName(resultSet.getString("name"));
                 s1.setScore(resultSet.getInt("score"));
+                MyClass myClass=new MyClass();
+                myClass.setCid(resultSet.getInt("cid"));
+                myClass.setName(resultSet.getString("cname"));
+                s1.setMyClass(myClass);
                 return s1;
             }
         });
@@ -115,8 +120,9 @@ public class JdbcTemplateDemo {
     @Test
     public void testFindAll2() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(JDBCUtils.getDataSource());
-        String sql = "select * from student";
+        String sql = "select class.cname ,student.* from student ,class where student.cid=class.id;";
         List<Student> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Student>(Student.class));
+
         for (Student student : list) {
             System.out.println(student);
         }
